@@ -1,0 +1,25 @@
+{
+    "name": "kpacha/php-gag",
+    "description": "GAG for PHP",
+    "require": {
+        "php"                   : ">=5.3.3",
+        "pugx/aop"              : "dev-master",
+        "dms/dms-filter"        : "dev-master",
+        "doctrine/common"       : "*",
+        "monolog/monolog"       : "1.5.0",
+        "symfony/dependency-injection": "2.2.*",
+        "symfony/config"        : "2.2.*",
+        "symfony/yaml"          : "2.2.*"
+        
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/kpacha/aop"}
+    ],
+    "minimum-stability"         : "dev",
+    "autoload": {
+        "psr-0": {
+            "Kpacha\\PhpGag\\"  : "lib/",
+            "Kpacha\\Tests\\"   : "tests/"
+        }
+    }
+}

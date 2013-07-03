@@ -1,0 +1,7 @@
+*~
+phpunit.xml
+composer.lock
+/report
+/vendor
+/tests/proxy
+/examples/proxy

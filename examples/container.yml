@@ -1,0 +1,5 @@
+services:
+  monolog.logger_standard:
+    class: "Monolog\\Logger"
+    arguments:
+      name: logger

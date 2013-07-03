@@ -1,0 +1,15 @@
+services:
+  annotation_reader:
+    class: "Doctrine\\Common\\Annotations\\AnnotationReader"
+  loggable:
+    class: "PUGX\\AOP\\Aspect\\Loggable"
+    arguments: ["@service_container"]
+  monolog.logger_standard:
+    class: "Monolog\\Logger"
+    arguments:
+      name: logger
+  my_service:
+    class: "PUGX\\AOP\\Stub\\MyClass"
+    arguments:
+      a: 1
+      b: 2
