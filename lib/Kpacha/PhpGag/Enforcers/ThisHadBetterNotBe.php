@@ -3,10 +3,10 @@
 namespace Kpacha\PhpGag\Enforcers;
 
 /**
- * Description of ThisHadBetterNotBe
+ * Enforces that the annotated parameter does not have the specified property.
  *
  * @author Kpacha <kpacha666@gmail.com>
- * 
+ *
  * @Annotation
  */
 class ThisHadBetterNotBe extends ThisHadBetterBe

@@ -4,6 +4,11 @@ namespace Kpacha\PhpGag\Aspects\Roulette;
 use PUGX\AOP\Aspect\AspectInterface,
     PUGX\AOP\Aspect\BaseAnnotation;
 
+/**
+ * Causes the annotated method to throw the indicated throwable with the specified probability.
+ *
+ * @author Kpacha <kpacha666@gmail.com>
+ */
 class Roulette implements AspectInterface
 {
 

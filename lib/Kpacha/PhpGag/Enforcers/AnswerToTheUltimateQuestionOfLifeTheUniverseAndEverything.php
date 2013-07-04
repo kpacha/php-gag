@@ -4,10 +4,11 @@ namespace Kpacha\PhpGag\Enforcers;
 use DMS\Filter\Rules\Rule;
 
 /**
- * Description of AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
+ * Causes the annnotated numeric parameter to evaluate to the Answer to
+ * the Ultimate Question of Life, the Universe and Everything.
  *
  * @author Kpacha <kpacha666@gmail.com>
- * 
+ *
  * @Annotation
  */
 class AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything extends Rule

@@ -6,14 +6,11 @@ use DMS\Filter\Mapping\Loader\AnnotationLoader as BaseAnnotationLoader,
     Doctrine\Common\Annotations\Reader,
     Doctrine\Common\Annotations\AnnotationRegistry;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of AnnotationLoader
+ * Extending the DMS\Filter\Mapping\Loader\AnnotationLoader in order to register the
+ * PhpGag annotated rules
  *
+ * @author rdohms (https://github.com/rdohms/DMS)
  * @author Kpacha <kpacha666@gmail.com>
  */
 class AnnotationLoader extends BaseAnnotationLoader

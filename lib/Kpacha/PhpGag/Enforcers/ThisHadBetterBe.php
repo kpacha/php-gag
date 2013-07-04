@@ -4,10 +4,10 @@ namespace Kpacha\PhpGag\Enforcers;
 use DMS\Filter\Rules\Rule;
 
 /**
- * Description of ThisHadBetterBe
+ * Enforces that the annotated parameter has the specified property.
  *
  * @author Kpacha <kpacha666@gmail.com>
- * 
+ *
  * @Annotation
  */
 class ThisHadBetterBe extends Rule
