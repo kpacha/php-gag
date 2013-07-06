@@ -8,7 +8,7 @@ use DMS\Filter\Mapping\Loader\AnnotationLoader as BaseAnnotationLoader,
 
 /**
  * Extending the DMS\Filter\Mapping\Loader\AnnotationLoader in order to register the
- * PhpGag annotated rules
+ * PhpGag annotatations
  *
  * @author rdohms (https://github.com/rdohms/DMS)
  * @author Kpacha <kpacha666@gmail.com>
@@ -20,8 +20,10 @@ class AnnotationLoader extends BaseAnnotationLoader
     {
         parent::__construct($reader);
 
-        //Register Filter Rules Annotation Namespace
-        AnnotationRegistry::registerAutoloadNamespace('Kpacha\PhpGag\Enforcers', __DIR__ . '/../../../../');
+        //Register Required Annotation Namespaces
+        $libFolder = __DIR__ . '/../../../../';
+        AnnotationRegistry::registerAutoloadNamespace('Kpacha\PhpGag', $libFolder);
+        AnnotationRegistry::registerAutoloadNamespace('PUGX\AOP', $libFolder . '../vendor/pugx/aop/src/');
     }
 
 }

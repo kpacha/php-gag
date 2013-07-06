@@ -11,12 +11,13 @@ use Kpacha\PhpGag\CodeReview\Analyzer,
 $reader = new AnnotationReader();
 
 //Load AnnotationLoader
-$enforcerLoader = new AnnotationLoader($reader);
+new AnnotationLoader($reader);
 
 //Get the analyser
 $analyzer = new Analyzer(new Inspector($reader));
 
 //Analyze you file
-$analyzer->addFile('User.php')->compile();
+$analysis = $analyzer->addFile('User.php')->addFile('Dummy.php')->compile()->getAnnotations();
 
-var_dump($analyzer->getAnnotations());
+var_dump($analysis['User.php']['Example\User']);
+var_dump($analysis['Dummy.php']['Example\Dummy']);
