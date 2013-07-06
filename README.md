@@ -26,15 +26,17 @@ immerse yourself in the PHP-GAG.
 
 ### Currently Available Annotations
 
-* @AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything
-* @CantTouchThis
-* @ImaLetYouFinishBut
-* @Noop
-* @Roulette
-* @ThisHadBetterBe
-* @ThisHadBetterNotBe
+* @AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything : Causes the annnotated numeric parameter to evaluate to the Answer to the Ultimate Question of Life, the Universe and Everything.
+* @CantTouchThis : Replaces the implementation of the annotated method to instead print "Stop" along with the specified reason to standard out.
+* @ImaLetYouFinishBut : Causes the annotated method to first execute the parameterless method indicated by the annotation's value attribute
+* @Noop : Causes the annotated method or all the methods of the annotated class to become noop.
+* @Roulette : Causes the annotated method to throw the indicated throwable with the specified probability.
+* @ThisHadBetterBe : Enforces that the annotated parameter has the specified property.
+* @ThisHadBetterNotBe : Enforces that the annotated parameter does not have the specified property.
 
-### Installation
+## Installation
+
+### Standalone installation
 
 At the moment of writing this documentation the code is only aviable by cloning it directly from github.
 
@@ -48,11 +50,13 @@ Run the tests to see if everything is ok
 
     phpunit
 
-Also, there a couple of demo scripts inside the _examples/_ folder. You could run it as
+Also, there a couple of demo scripts inside the _examples/_ folder. You could run them as
 
     cd examples
     php filter.php
     php aop.php
+
+### Installing as library
 
 Include the library in your project
 
@@ -70,6 +74,10 @@ Include the library in your project
         php composer.phar update
 
 
-### TODO
+## TODO
 
+* Enable the parameter validation (improving the AOP)
 * Complete the annotations gallery
+* Check the generated docs with the PHP-GAG annotations
+* Create a code review tool based on the PHP-GAG annotations
+* Publish the library at packagist
