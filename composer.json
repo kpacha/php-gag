@@ -4,13 +4,13 @@
     "require": {
         "php"                   : ">=5.3.3",
         "pugx/aop"              : "dev-master",
-        "dms/dms-filter"        : "dev-master",
-        "doctrine/common"       : "*",
+        "dms/dms-filter"        : "dev-master"
+    },
+    "require-dev": {
         "monolog/monolog"       : "1.5.0",
         "symfony/dependency-injection": "2.2.*",
         "symfony/config"        : "2.2.*",
         "symfony/yaml"          : "2.2.*"
-        
     },
     "repositories": [
         {"type": "vcs", "url": "https://github.com/kpacha/aop"}

@@ -43,7 +43,7 @@ $imaLetYouFinishButAspect = new Aspects\ImaLetYouFinishBut\ImaLetYouFinishBut($c
 
 $proxy = new $proxyClass(1, 2, $loggableAspect, $noopAspect, $rouletteAspect, $cantTouchThisAspect, $imaLetYouFinishButAspect);
 echo $proxy->doSomething(5);
-$proxy->replay("supu, tupu, lapu");
+$proxy->replay("supu, tupu, lapu\n");
 echo $proxy->tryToTouch();
 //echo $proxy->doSomethingSometimes(1);
 echo $proxy->doSomethingStupidSometimes(1);
