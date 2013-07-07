@@ -1,9 +1,9 @@
 <?php
 
-namespace Kpacha\PhpGag\Enforcers;
+namespace Kpacha\PhpGag\Filter;
 
 /**
- * Enforces that the annotated parameter does not have the specified property.
+ * Enforces that the annotated property does not have the specified property.
  *
  * @author Kpacha <kpacha666@gmail.com>
  *

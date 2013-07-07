@@ -1,10 +1,10 @@
 <?php
 
-namespace Kpacha\PhpGag\Enforcers;
+namespace Kpacha\PhpGag\Filter;
 use DMS\Filter\Rules\Rule;
 
 /**
- * Causes the annnotated numeric parameter to evaluate to the Answer to
+ * Causes the annnotated numeric property to evaluate to the Answer to
  * the Ultimate Question of Life, the Universe and Everything.
  *
  * @author Kpacha <kpacha666@gmail.com>

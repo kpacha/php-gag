@@ -1,8 +1,8 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\Enforcers\Mocks;
+namespace Kpacha\Tests\PhpGag\Filter\Mocks;
 
-use Kpacha\PhpGag\Enforcers\ThisHadBetterBe;
+use Kpacha\PhpGag\Filter\ThisHadBetterBe;
 
 /**
  * Simple mock for the Test of the ThisHadBetterBe rule

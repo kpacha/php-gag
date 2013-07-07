@@ -8,7 +8,7 @@ use Kpacha\PhpGag\Aspects\Noop\Annotation as Noop;
 use Kpacha\PhpGag\Aspects\Roulette\Annotation as Roulette;
 use Kpacha\PhpGag\Aspects\CantTouchThis\Annotation as CantTouchThis;
 use Kpacha\PhpGag\Aspects\ImaLetYouFinishBut\Annotation as ImaLetYouFinishBut;
-use Kpacha\PhpGag\Enforcers\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
+use Kpacha\PhpGag\Filter\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
 
 /**
  * some doc comments go here

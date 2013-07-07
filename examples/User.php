@@ -4,9 +4,9 @@ namespace Example;
 
 //Import Annotations
 use DMS\Filter\Rules as Filter;
-use Kpacha\PhpGag\Enforcers\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
-use Kpacha\PhpGag\Enforcers\ThisHadBetterBe;
-use Kpacha\PhpGag\Enforcers\ThisHadBetterNotBe;
+use Kpacha\PhpGag\Filter\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
+use Kpacha\PhpGag\Filter\ThisHadBetterBe;
+use Kpacha\PhpGag\Filter\ThisHadBetterNotBe;
 
 class User
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\Enforcers\Mocks;
+namespace Kpacha\Tests\PhpGag\Filter\Mocks;
 
-use Kpacha\PhpGag\Enforcers\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
+use Kpacha\PhpGag\Filter\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
 
 /**
  * Simple mock for the Test of the AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything rule

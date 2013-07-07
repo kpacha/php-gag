@@ -1,15 +1,15 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\Enforcers;
+namespace Kpacha\Tests\PhpGag\Filter;
 
-use Kpacha\Tests\PhpGag\Enforcers\Mocks\ThisHadBetterBeMock;
+use Kpacha\Tests\PhpGag\Filter\Mocks\ThisHadBetterBeMock;
 
 /**
  * Test of the ThisHadBetterBe rule
  *
  * @author Kpacha <kpacha666@gmail.com>
  */
-class ThisHadBetterBeTest extends AbstractEnforcerTest
+class ThisHadBetterBeTest extends AbstractFilterTest
 {
     protected $_subject = null;
 
@@ -24,7 +24,7 @@ class ThisHadBetterBeTest extends AbstractEnforcerTest
         $this->_subject->shouldBeZero = 0;
     }
     
-    public function testEnforcer()
+    public function testFilter()
     {
         $original = $this->_subject;
         $this->filter->filterEntity($this->_subject);
@@ -32,7 +32,7 @@ class ThisHadBetterBeTest extends AbstractEnforcerTest
     }
     
     /**
-     * @expectedException        Kpacha\PhpGag\Enforcers\EnforcerException
+     * @expectedException        Kpacha\PhpGag\Filter\FilterException
      * @expectedExceptionMessage The received value 1 is not what it should be
      */
     public function testDetectNotNull()
@@ -42,7 +42,7 @@ class ThisHadBetterBeTest extends AbstractEnforcerTest
     }
     
     /**
-     * @expectedException        Kpacha\PhpGag\Enforcers\EnforcerException
+     * @expectedException        Kpacha\PhpGag\Filter\FilterException
      * @expectedExceptionMessage The received value 1 is not what it should be
      */
     public function testDetectNotNegative()
@@ -52,7 +52,7 @@ class ThisHadBetterBeTest extends AbstractEnforcerTest
     }
     
     /**
-     * @expectedException        Kpacha\PhpGag\Enforcers\EnforcerException
+     * @expectedException        Kpacha\PhpGag\Filter\FilterException
      * @expectedExceptionMessage The received value 1 is not what it should be
      */
     public function testDetectNotZero()
@@ -62,7 +62,7 @@ class ThisHadBetterBeTest extends AbstractEnforcerTest
     }
     
     /**
-     * @expectedException        Kpacha\PhpGag\Enforcers\EnforcerException
+     * @expectedException        Kpacha\PhpGag\Filter\FilterException
      * @expectedExceptionMessage The received value -1 is not what it should be
      */
     public function testDetectNotPositive()

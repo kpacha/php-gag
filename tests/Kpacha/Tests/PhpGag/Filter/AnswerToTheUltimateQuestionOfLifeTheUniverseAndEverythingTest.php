@@ -1,18 +1,18 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\Enforcers;
+namespace Kpacha\Tests\PhpGag\Filter;
 
-use Kpacha\Tests\PhpGag\Enforcers\Mocks\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverythingMock;
+use Kpacha\Tests\PhpGag\Filter\Mocks\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverythingMock;
 
 /**
  * Test of the AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything rule
  *
  * @author Kpacha <kpacha666@gmail.com>
  */
-class AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverythingTest extends AbstractEnforcerTest
+class AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverythingTest extends AbstractFilterTest
 {
 
-    public function testEnforcer()
+    public function testFilter()
     {   
         $mock = new AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverythingMock();
         $this->filter->filterEntity($mock);

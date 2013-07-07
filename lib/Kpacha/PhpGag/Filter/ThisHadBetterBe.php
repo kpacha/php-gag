@@ -1,10 +1,10 @@
 <?php
 
-namespace Kpacha\PhpGag\Enforcers;
+namespace Kpacha\PhpGag\Filter;
 use DMS\Filter\Rules\Rule;
 
 /**
- * Enforces that the annotated parameter has the specified property.
+ * Enforces that the annotated property has the specified property.
  *
  * @author Kpacha <kpacha666@gmail.com>
  *
@@ -28,7 +28,7 @@ class ThisHadBetterBe extends Rule
     public function applyFilter($value)
     {
         if(!$this->validate($value)){
-            throw new EnforcerException("The received value $value is not what it should be");
+            throw new FilterException("The received value $value is not what it should be");
         }
         return $value;
     }

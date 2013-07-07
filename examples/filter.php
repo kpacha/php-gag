@@ -11,10 +11,10 @@ use DMS\Filter\Mapping\ClassMetadataFactory,
 $reader = new AnnotationReader();
 
 //Load AnnotationLoader
-$enforcerLoader = new AnnotationLoader($reader);
+$filterLoader = new AnnotationLoader($reader);
 
 //Get a Filter
-$filter = new Filter(new ClassMetadataFactory($enforcerLoader));
+$filter = new Filter(new ClassMetadataFactory($filterLoader));
 
 //Get your Entity
 require 'User.php';
