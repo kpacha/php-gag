@@ -2,7 +2,7 @@
 
 namespace Kpacha\PhpGag\Aspects;
 
-use \Exception;
+use PUGX\AOP\Exception;
 
 /**
  * Default exception for the aspects package.
