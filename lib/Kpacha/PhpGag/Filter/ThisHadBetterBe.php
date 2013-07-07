@@ -2,9 +2,10 @@
 
 namespace Kpacha\PhpGag\Filter;
 use DMS\Filter\Rules\Rule;
+use PUGX\AOP\Aspect\Validator\Annotation as ValidatorAnnotation;
 
 /**
- * Enforces that the annotated property has the specified property.
+ * Validates that the annotated property has the specified property.
  *
  * @author Kpacha <kpacha666@gmail.com>
  *
@@ -12,13 +13,13 @@ use DMS\Filter\Rules\Rule;
  */
 class ThisHadBetterBe extends Rule
 {
-    const NEGATIVE = 0;
-    const NULL = 1;
-    const POSITIVE = 2;
-    const THE_BLUE_PILL = 3;
-    const THE_RED_PILL = 4;
-    const THE_STOLEN_DEATH_STAR_PLANS = 5;
-    const ZERO = 6;
+    const NEGATIVE = ValidatorAnnotation::NEGATIVE;
+    const NULL = ValidatorAnnotation::NULL;
+    const POSITIVE = ValidatorAnnotation::POSITIVE;
+    const THE_BLUE_PILL = 100;
+    const THE_RED_PILL = 101;
+    const THE_STOLEN_DEATH_STAR_PLANS = 102;
+    const ZERO = ValidatorAnnotation::ZERO;
 
     public $expected = self::THE_STOLEN_DEATH_STAR_PLANS;
     
