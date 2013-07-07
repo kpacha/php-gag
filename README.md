@@ -26,13 +26,13 @@ immerse yourself in the PHP-GAG.
 
 ### Currently Available Annotations
 
-* @AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything : Causes the annnotated numeric parameter to evaluate to the Answer to the Ultimate Question of Life, the Universe and Everything.
+* @AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything : Causes the annnotated numeric parameter/property to evaluate to the Answer to the Ultimate Question of Life, the Universe and Everything.
 * @CantTouchThis : Replaces the implementation of the annotated method to instead print "Stop" along with the specified reason to standard out.
 * @ImaLetYouFinishBut : Causes the annotated method to first execute the parameterless method indicated by the annotation's value attribute
-* @Noop : Causes the annotated method or all the methods of the annotated class to become noop.
+* @Noop : Causes the annotated method (or all the methods of the annotated class - TODO) to become noop.
 * @Roulette : Causes the annotated method to throw the indicated throwable with the specified probability.
-* @ThisHadBetterBe : Enforces that the annotated parameter has the specified property.
-* @ThisHadBetterNotBe : Enforces that the annotated parameter does not have the specified property.
+* @ThisHadBetterBe : Enforces that the annotated parameter/property has the specified property.
+* @ThisHadBetterNotBe : Enforces that the annotated parameter/property does not have the specified property.
 
 ## Installation
 
@@ -74,9 +74,15 @@ Include the library in your project
         php composer.phar update
 
 
+## Usages
+
+This library has 2 main packages designed to be used mixed or not. The filter package
+allows you to filter/enforce the properties of any object and with the aspects package
+you could enhace your services with a set of method lockups, replacements, parameter
+inspectors and validators. Look at the _examples/_ and _tests/_ for more details.
+
 ## TODO
 
-* Enable the parameter validation (improving the AOP)
 * Complete the annotations gallery
 * Check the generated docs with the PHP-GAG annotations
 * Create a code review tool based on the PHP-GAG annotations
