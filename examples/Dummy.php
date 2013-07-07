@@ -10,6 +10,12 @@ use Kpacha\PhpGag\Aspects\CantTouchThis\Annotation as CantTouchThis;
 use Kpacha\PhpGag\Aspects\ImaLetYouFinishBut\Annotation as ImaLetYouFinishBut;
 use Kpacha\PhpGag\Enforcers\AnswerToTheUltimateQuestionOfLifeTheUniverseAndEverything;
 
+/**
+ * some doc comments go here
+ * 
+ * @link http://github.com/kpacha/php-gag the project homepage
+ * @\Example\NonGAGAnnotation
+ */
 class Dummy
 {
 
@@ -44,6 +50,7 @@ class Dummy
      * @Log(what="$c", when="start", with="monolog.logger_standard", as="argument $c is %s")
      * @Log(what="$this->b", when="start", with="monolog.logger_standard", as="Hey, value of MyExampleClass::b is %s")
      * @Log(what="$this->b", when="end", with="monolog.logger_standard", as="HOLY COW! Now MyExampleClass::b is %s")
+     * @NonGAGAnnotation
      */
     public function doSomething($c)
     {
@@ -52,6 +59,7 @@ class Dummy
 
     /**
      * @Noop
+     * @NonGAGAnnotation(3)
      */
     public function doSomethingStupid($c)
     {

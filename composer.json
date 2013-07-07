@@ -3,7 +3,7 @@
     "description": "GAG for PHP",
     "require": {
         "php"                   : ">=5.3.3",
-        "pugx/aop"              : "dev-master",
+        "pugx/aop"              : "dev-preserving_3rd_party_comments",
         "dms/dms-filter"        : "dev-master"
     },
     "require-dev": {

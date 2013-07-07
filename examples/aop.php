@@ -13,6 +13,7 @@ use Kpacha\PhpGag\Aspects;
 
 // integrate autoloading (composer is recommended) and annotations mapping
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+AnnotationRegistry::registerFile('NonGAGAnnotation.php');
 
 // instantiate the Symfony2 DIC
 $container = new ContainerBuilder();
