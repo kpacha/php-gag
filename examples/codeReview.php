@@ -6,9 +6,11 @@ use Kpacha\PhpGag\CodeReview\Analyzer,
     Kpacha\PhpGag\CodeReview\Inspector,
     Doctrine\Common\Annotations\AnnotationReader,
     Kpacha\PhpGag\Mapping\Loader\AnnotationLoader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
 //Get Doctrine Reader
 $reader = new AnnotationReader();
+AnnotationRegistry::registerFile('NonGAGAnnotation.php');
 
 //Load AnnotationLoader
 new AnnotationLoader($reader);
