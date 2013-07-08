@@ -26,7 +26,9 @@ class AnalysisResult
 
     public function setPropertyAnnotations($propertyAnnotations)
     {
-        $this->propertyAnnotations = $propertyAnnotations;
+        if (is_array($propertyAnnotations) && count($propertyAnnotations)) {
+            $this->propertyAnnotations = $propertyAnnotations;
+        }
     }
 
     public function addPropertyAnnotations($property, $propertyAnnotations)
@@ -41,7 +43,9 @@ class AnalysisResult
 
     public function setMethodAnnotations($methodAnnotations)
     {
-        $this->methodAnnotations = $methodAnnotations;
+        if (is_array($methodAnnotations) && count($methodAnnotations)) {
+            $this->methodAnnotations = $methodAnnotations;
+        }
     }
 
     public function addMethodAnnotations($method, $methodAnnotations)
