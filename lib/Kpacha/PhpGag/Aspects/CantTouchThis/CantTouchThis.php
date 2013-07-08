@@ -9,7 +9,7 @@ use PUGX\AOP\Aspect\AspectInterface,
  * Replaces the implementation of the annotated method to instead print "Stop"
  * along with the specified reason to standard out. For example, calling the method:
  *
- * @CantTouchThis
+ * (@)CantTouchThis
  * public funciton tryToTouchThis() {
  *     echo "This has been touched.";
  * }

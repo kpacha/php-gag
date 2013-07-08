@@ -10,7 +10,7 @@ use PUGX\AOP\Aspect\AspectInterface,
  * Causes the annotated method to first execute the parameterless method indicated
  * by the annotation's value attribute. For example:
  *
- * @ImaLetYouFinishBut("interrupt")
+ * (@)ImaLetYouFinishBut("interrupt")
  * public void deliver(AcceptanceSpeech speech) {
  *     crowd.listen(speech);
  * }
