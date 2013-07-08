@@ -3,7 +3,7 @@
 require_once '../vendor/autoload.php';
 
 use Kpacha\PhpGag\CodeReview\Analyzer,
-    Kpacha\PhpGag\CodeReview\OptimizedInspector,
+    Kpacha\PhpGag\CodeReview\Inspector,
     Kpacha\PhpGag\CodeReview\Reporter,
     Doctrine\Common\Annotations\AnnotationReader,
     Kpacha\PhpGag\Mapping\Loader\AnnotationLoader,
@@ -21,7 +21,7 @@ AnnotationRegistry::registerFile('NonGAGAnnotation.php');
 new AnnotationLoader($reader);
 
 //Get the analyser
-$analyzer = new Analyzer(new OptimizedInspector($reader), new Reporter($logPath));
+$analyzer = new Analyzer(new Inspector($reader), new Reporter($logPath));
 
 //Analyze your files
 $analyzer

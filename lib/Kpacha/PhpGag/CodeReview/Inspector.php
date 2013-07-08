@@ -3,6 +3,13 @@
 namespace Kpacha\PhpGag\CodeReview;
 
 use Doctrine\Common\Annotations\Reader;
+use \PHPParser_Lexer;
+use \PHPParser_Parser;
+use \PHPParser_Node_Stmt_Namespace;
+use \PHPParser_Node_Stmt_Class;
+use \PHPParser_Node_Stmt_ClassMethod;
+use \PHPParser_Node_Stmt_PropertyProperty;
+use \ReflectionClass;
 
 class Inspector implements InspectorInterface
 {
@@ -11,7 +18,6 @@ class Inspector implements InspectorInterface
      * @var Reader
      */
     protected $annotationReader;
-    protected $tokens = array();
 
     public function __construct(Reader $reader)
     {
@@ -20,76 +26,106 @@ class Inspector implements InspectorInterface
 
     public function inspect($file)
     {
-        if(!is_file($file) || !is_readable($file)) {
-            throw new \Exception("Can't inspect $file");
-        }
         $inspection = array();
-        $namespace = $this->getNamespace($file);
-        foreach ($this->getClassNames($file) as $classToInspect) {
-            $className = $namespace . '\\' . $classToInspect;
-            require_once $file;
-            $inspection[$className] = $this->inspectClass($className);
+        foreach ($this->getChildren($this->parse($file), '\PHPParser_Node_Stmt_Namespace') as $namespace) {
+            $inspection = array_merge($inspection, $this->inspectClasses($namespace));
         }
         return $inspection;
     }
 
-    protected function inspectClass($classToInspect)
+    protected function inspectClasses(PHPParser_Node_Stmt_Namespace $namespace)
     {
-        $class = new \ReflectionClass($classToInspect);
+        $inspection = array();
+        foreach ($this->getChildren($namespace, '\PHPParser_Node_Stmt_Class') as $class) {
+            $className = $namespace->name . '\\' . $class->name;
+            $inspection[$className] = $this->inspectClass($class, $className);
+        }
+        return $inspection;
+    }
+
+    protected function inspectClass(PHPParser_Node_Stmt_Class $class, $className)
+    {
+        $reflClass = new ReflectionClass('\\' . $className);
         $result = new AnalysisResult;
-        $result->setClassAnnotations($this->annotationReader->getClassAnnotations($class));
-        foreach ($class->getMethods() as $method) {
-            $result->addMethodAnnotations($method->name,
-                    $this->annotationReader->getMethodAnnotations($method));
-        }
-        foreach ($class->getProperties() as $property) {
-            $result->addPropertyAnnotations($property->name,
-                    $this->annotationReader->getPropertyAnnotations($property));
-        }
+        $result->setClassAnnotations($this->createDescriptions($class->getLine(),
+                        $this->annotationReader->getClassAnnotations($reflClass)));
+        $result->setMethodAnnotations($this->inspectMethods($class, $reflClass));
+        $result->setPropertyAnnotations($this->inspectProperties($class, $reflClass));
         return $result;
     }
 
-    protected function getTokens($file)
+    protected function inspectMethods(PHPParser_Node_Stmt_Class $class, ReflectionClass $reflClass)
     {
-        if (!isset($this->tokens[$file])) {
-            $this->tokens[$file] = token_get_all(file_get_contents($file));
+        $inspection = array();
+        foreach ($this->getChildren($class, '\PHPParser_Node_Stmt_ClassMethod') as $method) {
+            $inspection[$method->name] = $this->inspectMethod($method, $reflClass);
         }
-        return $this->tokens[$file];
+        return $inspection;
     }
 
-    protected function getNamespace($file)
+    protected function inspectMethod(PHPParser_Node_Stmt_ClassMethod $method, ReflectionClass $reflClass)
     {
-        $tokens = $this->getTokens($file);
-        $namespace = '';
-        foreach ($tokens as $pos => $token) {
-            if (is_array($token) && $token[0] == T_NAMESPACE) {
-                for ($i = $pos + 2;
-                            is_array($tokens[$i]) && ($tokens[$i][0] == T_STRING || $tokens[$i][0] == T_NS_SEPARATOR);
-                            $i++) {
-                    $namespace .= $tokens[$i][1];
+        return $this->createDescriptions(
+                        $method->getLine(),
+                        $this->annotationReader->getMethodAnnotations($reflClass->getMethod($method->name))
+        );
+    }
+
+    protected function inspectProperties(PHPParser_Node_Stmt_Class $class, ReflectionClass $reflClass)
+    {
+        $inspection = array();
+        foreach ($this->getChildren($class, '\PHPParser_Node_Stmt_Property') as $stmt) {
+            foreach ($this->getChildren($stmt, '\PHPParser_Node_Stmt_PropertyProperty') as $property) {
+
+                if (!$property->name) {
+                    throw new CodeReviewException(print_r($property, 1));
                 }
-                break;
+                $inspection[$property->name] = $this->inspectProperty($property, $reflClass);
             }
         }
-        return $namespace;
+        return $inspection;
     }
 
-    protected function getClassNames($file)
+    protected function inspectProperty(PHPParser_Node_Stmt_PropertyProperty $property, ReflectionClass $reflClass)
     {
-        $tokens = $this->getTokens($file);
-        $classNames = array();
-        $classToken = false;
-        foreach ($tokens as $token) {
-            if (!is_array($token))
-                continue;
-            if ($token[0] == T_CLASS) {
-                $classToken = true;
-            } else if ($classToken && $token[0] == T_STRING) {
-                $classNames[] = $token[1];
-                $classToken = false;
+        return $this->createDescriptions(
+                        $property->getLine(),
+                        $this->annotationReader->getPropertyAnnotations($reflClass->getProperty($property->name))
+        );
+    }
+
+    protected function parse($file)
+    {
+        require_once $file;
+        $parser = new PHPParser_Parser(new PHPParser_Lexer);
+        return $parser->parse(file_get_contents($file));
+    }
+
+    protected function getChildren($stmt, $type = 'PHPParser_Node_Stmt')
+    {
+        $children = array();
+        foreach ($stmt as $child) {
+            if ($child instanceof $type) {
+                $children[] = $child;
+            } else if (is_array($child)) {
+                $children = array_merge($children, $this->getChildren($child, $type));
             }
         }
-        return $classNames;
+        return $children;
+    }
+
+    protected function createDescriptions($line, array $annotations)
+    {
+        $descriptions = array();
+        foreach ($annotations as $annotation) {
+            $descriptions[] = $this->createDescription($line, $annotation);
+        }
+        return $descriptions;
+    }
+
+    protected function createDescription($line, $annotation)
+    {
+        return new Description($line, $annotation);
     }
 
 }
