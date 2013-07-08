@@ -5,6 +5,7 @@
         "php"                   : ">=5.3.3",
         "pugx/aop"              : "dev-inspecting_parameters",
         "dms/dms-filter"        : "dev-master",
+        "mayflower/php-codebrowser": "dev-master",
         "nikic/php-parser"      : "0.9.3"
     },
     "require-dev": {
@@ -14,7 +15,8 @@
         "symfony/yaml"          : "2.2.*"
     },
     "repositories": [
-        {"type": "vcs", "url": "https://github.com/kpacha/aop"}
+        {"type": "vcs", "url": "https://github.com/kpacha/aop"},
+        {"type": "vcs", "url": "https://github.com/kpacha/PHP_CodeBrowser"}
     ],
     "minimum-stability"         : "dev",
     "autoload": {
