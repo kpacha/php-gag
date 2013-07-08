@@ -62,9 +62,9 @@ class Analyzer implements AnalyzerInterface
                         new \RecursiveDirectoryIterator($folder), \RecursiveIteratorIterator::SELF_FIRST
         );
         foreach ($iterator as $name => $object) {
-            if(!preg_match('/[\/\.|\/\.\.]$/', $name) && !$object->isDir()){
-                    $files[] = $name; 
-                }
+            if (!preg_match('/[\/\.|\/\.\.]$/', $name) && !$object->isDir()) {
+                $files[] = $name;
+            }
         }
         return $files;
     }
