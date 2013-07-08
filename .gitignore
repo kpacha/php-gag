@@ -5,3 +5,5 @@ composer.lock
 /vendor
 /tests/proxy
 /examples/proxy
+/examples/log
+/examples/output
