@@ -15,8 +15,7 @@
         "symfony/yaml"          : "2.2.*"
     },
     "repositories": [
-        {"type": "vcs", "url": "https://github.com/kpacha/aop"},
-        {"type": "vcs", "url": "https://github.com/kpacha/PHP_CodeBrowser"}
+        {"type": "vcs", "url": "https://github.com/kpacha/aop"}
     ],
     "minimum-stability"         : "dev",
     "autoload": {
