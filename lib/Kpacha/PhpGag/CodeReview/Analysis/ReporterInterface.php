@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpacha\PhpGag\CodeReview;
+namespace Kpacha\PhpGag\CodeReview\Analysis;
 
 interface ReporterInterface
 {

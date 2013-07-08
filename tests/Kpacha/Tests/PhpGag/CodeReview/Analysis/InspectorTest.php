@@ -1,9 +1,9 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\CodeReview;
+namespace Kpacha\Tests\PhpGag\CodeReview\Analysis;
 
-use Kpacha\PhpGag\CodeReview\AnalysisResult;
-use Kpacha\PhpGag\CodeReview\Inspector;
+use Kpacha\PhpGag\CodeReview\Analysis\AnalysisResult;
+use Kpacha\PhpGag\CodeReview\Analysis\Inspector;
 use \PHPUnit_Framework_TestCase as TestCase;
 
 class InspectorTest extends TestCase
@@ -11,7 +11,7 @@ class InspectorTest extends TestCase
 
     public function testClassDetection()
     {
-        $file = __DIR__ . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . 'NotAnnotated.php';
+        $file = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Mocks' . DIRECTORY_SEPARATOR . 'NotAnnotated.php';
         $mockedReader = $this->mockReader();
         $subject = new Inspector($mockedReader);
         $expectedResult = new AnalysisResult;

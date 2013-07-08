@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpacha\PhpGag\CodeReview;
+namespace Kpacha\PhpGag\CodeReview\Analysis;
 
 use Doctrine\Common\Annotations\Reader;
 use \PHPParser_Lexer;
@@ -10,6 +10,7 @@ use \PHPParser_Node_Stmt_Class;
 use \PHPParser_Node_Stmt_ClassMethod;
 use \PHPParser_Node_Stmt_PropertyProperty;
 use \ReflectionClass;
+use Kpacha\PhpGag\CodeReview\CodeReviewException;
 
 class Inspector implements InspectorInterface
 {

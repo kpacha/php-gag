@@ -1,13 +1,13 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\CodeReview\Browser;
+namespace Kpacha\Tests\PhpGag\CodeReview\Synthesis;
 
 require_once PHPCB_TEST_DIR . '/../AbstractTests.php';
 require_once PHPCB_SOURCE . '/File.php';
 require_once PHPCB_SOURCE . '/Issue.php';
 require_once PHPCB_SOURCE . '/IssueXml.php';
 
-use Kpacha\PhpGag\CodeReview\Browser\CbDataGAG;
+use Kpacha\PhpGag\CodeReview\Synthesis\CbDataGAG;
 
 /**
  * Description of CbDataGAGTest

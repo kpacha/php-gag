@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpacha\PhpGag\CodeReview;
+namespace Kpacha\PhpGag\CodeReview\Analysis;
 
 use \DOMDocument;
 
@@ -79,9 +79,9 @@ class Reporter implements ReporterInterface
         $nodes = array();
         foreach ($descriptions as $description) {
             $annotationClass = get_class($description->getAnnotation());
-            $annotationNode = $document->createElement('annotation');
-            $annotationNode->setAttribute('message',
-                    "Annotation of type [$annotationClass] detected on $level [$component]");
+            $message = "Annotation of type [$annotationClass] detected on $level [$component]";
+            $annotationNode = $document->createElement('annotation', $message);
+            $annotationNode->setAttribute('message',$message);
             $annotationNode->setAttribute('line', $description->getLine());
             $annotationNode->setAttribute('severity', 'info');
             $nodes[] = $annotationNode;

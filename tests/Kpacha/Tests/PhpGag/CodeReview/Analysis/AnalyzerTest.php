@@ -1,9 +1,9 @@
 <?php
 
-namespace Kpacha\Tests\PhpGag\CodeReview;
+namespace Kpacha\Tests\PhpGag\CodeReview\Analysis;
 
-use Kpacha\PhpGag\CodeReview\Analyzer;
-use Kpacha\PhpGag\CodeReview\AnalysisResult;
+use Kpacha\PhpGag\CodeReview\Analysis\Analyzer;
+use Kpacha\PhpGag\CodeReview\Analysis\AnalysisResult;
 use \PHPUnit_Framework_TestCase as TestCase;
 
 class AnalyzerTest extends TestCase
@@ -33,8 +33,7 @@ class AnalyzerTest extends TestCase
         $this->subject->addFile('b');
         $this->subject->addFile('a');
         $this->assertEquals(
-                array('a.php' => $this->mockResult()),
-                $this->subject->compile()->getAnnotations()
+                array('a.php' => $this->mockResult()), $this->subject->compile()->getAnnotations()
         );
     }
 
@@ -51,7 +50,7 @@ class AnalyzerTest extends TestCase
 
     public function testCollectAnnotationFromAFolder()
     {
-        $folder = __DIR__ . DIRECTORY_SEPARATOR . 'Mocks';
+        $folder = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Mocks';
         $expectedAnnotations = array(
             $folder . DIRECTORY_SEPARATOR . 'Annotated.php' => $this->mockResult(),
             $folder . DIRECTORY_SEPARATOR . 'NotAnnotated.php' => $this->mockResult()
@@ -66,7 +65,7 @@ class AnalyzerTest extends TestCase
 
     public function testCollectAnnotationFromMergedData()
     {
-        $folder = __DIR__ . DIRECTORY_SEPARATOR . 'Mocks';
+        $folder = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Mocks';
         $file = $folder . DIRECTORY_SEPARATOR . 'Annotated.php';
         $expectedAnnotations = array(
             $file => $this->mockResult(),
@@ -92,7 +91,7 @@ class AnalyzerTest extends TestCase
 
     protected function mockInspector($returnedValue = null)
     {
-        $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Inspector', array('inspect'))
+        $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Analysis\InspectorInterface', array('inspect'))
                 ->disableOriginalConstructor()
                 ->getMock();
         $inspector->expects($this->any())
@@ -109,7 +108,7 @@ class AnalyzerTest extends TestCase
 
     protected function mockReporter($returnedValue = true)
     {
-        $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Reporter', array('report'))
+        $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Analysis\ReporterInterface', array('report'))
                 ->disableOriginalConstructor()
                 ->getMock();
         $inspector->expects($this->any())

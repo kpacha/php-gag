@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpacha\PhpGag\CodeReview\Browser;
+namespace Kpacha\PhpGag\CodeReview\Synthesis;
 
 use \CbErrorCheckstyle;
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace Kpacha\PhpGag\CodeReview;
+namespace Kpacha\PhpGag\CodeReview\Analysis;
+
+use Kpacha\PhpGag\CodeReview\CodeReviewException;
 
 class Analyzer implements AnalyzerInterface
 {
