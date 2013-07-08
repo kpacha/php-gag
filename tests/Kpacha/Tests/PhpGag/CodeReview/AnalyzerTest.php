@@ -13,12 +13,12 @@ class AnalyzerTest extends TestCase
 
     public function setUp()
     {
-        $this->subject = new Analyzer($this->mockInspector($this->mockResult()));
+        $this->subject = new Analyzer($this->mockInspector($this->mockResult()), $this->mockReporter());
     }
 
     public function testCollectAnnotationFromAFile()
     {
-        $file = 'a';
+        $file = 'a.php';
         $this->assertEquals(
                 array($file => $this->mockResult()),
                 $this->subject->addFile($file)
@@ -27,13 +27,24 @@ class AnalyzerTest extends TestCase
         );
     }
 
-    public function testCollectAnnotationFromSeveralFiles()
+    public function testCollectAnnotationIgnoringNonPhpFiles()
     {
-        $this->subject->addFile('a');
+        $this->subject->addFile('a.php');
         $this->subject->addFile('b');
         $this->subject->addFile('a');
         $this->assertEquals(
-                array('a' => $this->mockResult(), 'b' => $this->mockResult()),
+                array('a.php' => $this->mockResult()),
+                $this->subject->compile()->getAnnotations()
+        );
+    }
+
+    public function testCollectAnnotationFromSeveralFiles()
+    {
+        $this->subject->addFile('a.php');
+        $this->subject->addFile('b.php');
+        $this->subject->addFile('a.php');
+        $this->assertEquals(
+                array('a.php' => $this->mockResult(), 'b.php' => $this->mockResult()),
                 $this->subject->compile()->getAnnotations()
         );
     }
@@ -69,6 +80,16 @@ class AnalyzerTest extends TestCase
         );
     }
 
+    /**
+     * @expectedException        Kpacha\PhpGag\CodeReview\CodeReviewException
+     * @expectedExceptionMessage Writting down the report!
+     */
+    public function testCatchReporterError()
+    {
+        $this->subject = new Analyzer($this->mockInspector(), $this->mockReporter(false));
+        $this->subject->addFile('a')->compile();
+    }
+
     protected function mockInspector($returnedValue = null)
     {
         $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Inspector', array('inspect'))
@@ -84,6 +105,18 @@ class AnalyzerTest extends TestCase
     protected function mockResult()
     {
         return new AnalysisResult;
+    }
+
+    protected function mockReporter($returnedValue = true)
+    {
+        $inspector = $this->getMockBuilder('Kpacha\PhpGag\CodeReview\Reporter', array('report'))
+                ->disableOriginalConstructor()
+                ->getMock();
+        $inspector->expects($this->any())
+                ->method('report')
+                ->will($this->returnValue($returnedValue));
+
+        return $inspector;
     }
 
 }

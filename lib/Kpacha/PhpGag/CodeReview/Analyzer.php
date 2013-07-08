@@ -14,9 +14,15 @@ class Analyzer implements AnalyzerInterface
      */
     protected $inspector = null;
 
-    public function __construct($inspector)
+    /**
+     * @var ReporterInterface
+     */
+    protected $reporter = null;
+
+    public function __construct(InspectorInterface $inspector, ReporterInterface $reporter)
     {
         $this->inspector = $inspector;
+        $this->reporter = $reporter;
     }
 
     public function addFile($file)
@@ -34,9 +40,19 @@ class Analyzer implements AnalyzerInterface
     public function compile()
     {
         foreach ($this->getFilesToScan() as $file) {
-            $this->annotations[$file] = $this->inspector->inspect($file);
+            if ($this->shouldBeInspected($file)) {
+                $this->annotations[$file] = $this->inspector->inspect($file);
+            }
+        }
+        if ($this->reporter->report($this->annotations) === false) {
+            throw new CodeReviewException('Writting down the report!');
         }
         return $this;
+    }
+
+    public function shouldBeInspected($file)
+    {
+        return preg_match('/[\.php]$/', $file);
     }
 
     public function getAnnotations()
