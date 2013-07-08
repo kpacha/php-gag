@@ -9,7 +9,7 @@ use \CbErrorCheckstyle;
  *
  * @author Kpacha <kpacha666@gmail.com>
  */
-class CbDataGAG extends CbErrorCheckstyle
+class CbErrorGAG extends CbErrorCheckstyle
 {
     /**
      * Name of this plugin.

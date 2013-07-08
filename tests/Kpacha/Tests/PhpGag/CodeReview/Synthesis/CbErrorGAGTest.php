@@ -7,21 +7,21 @@ require_once PHPCB_SOURCE . '/File.php';
 require_once PHPCB_SOURCE . '/Issue.php';
 require_once PHPCB_SOURCE . '/IssueXml.php';
 
-use Kpacha\PhpGag\CodeReview\Synthesis\CbDataGAG;
+use Kpacha\PhpGag\CodeReview\Synthesis\CbErrorGAG;
 
 /**
  * Description of CbDataGAGTest
  *
  * @author Kpacha <kpacha666@gmail.com>
  */
-class CbDataGAGTest extends \CbAbstractTests
+class CbErrorGAGTest extends \CbAbstractTests
 {
     /**
      * The object to test.
      *
-     * @var CbDataGAG
+     * @var CbErrorGAG
      */
-    protected $_cbDataGAG;
+    protected $_cbErrorGAG;
 
     /**
      * The xml string to test the plugin against.
@@ -67,7 +67,7 @@ HERE;
         $xml->validateOnParse = true;
         $xml->loadXML($this->_testXml);
         $issueXML->addXMLFile($xml);
-        $this->_cbDataGAG = new CbDataGAG($issueXML);
+        $this->_cbErrorGAG = new CbErrorGAG($issueXML);
     }
 
     /**
@@ -117,7 +117,7 @@ HERE;
                 array()
             )
         );
-        $actual = $this->_cbDataGAG->getFilelist();
+        $actual = $this->_cbErrorGAG->getFilelist();
         $this->assertEquals($expected, $actual);
     }
 }

@@ -63,7 +63,7 @@ class CodeReview
                         $this->_logPath, $this->_sourcePath, $this->_outputPath
         );
 
-        $controller->addErrorPlugins('\Kpacha\PhpGag\CodeReview\Synthesis\CbDataGAG');
+        $controller->addErrorPlugins('\Kpacha\PhpGag\CodeReview\Synthesis\CbErrorGAG');
 
         try {
             $controller->run();

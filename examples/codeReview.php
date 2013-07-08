@@ -7,7 +7,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $logPath = __DIR__ . DIRECTORY_SEPARATOR . 'log';
-$sourcePath = realpath(__DIR__ . '/../tests/Kpacha/Tests/PhpGag/Aspects/Mocks');
+$sourcePath = realpath(__DIR__ . '/../lib');
 
 // Register foreign annotations
 AnnotationRegistry::registerFile('NonGAGAnnotation.php');
