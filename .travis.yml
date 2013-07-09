@@ -8,4 +8,8 @@ matrix:
     - php: 5.5
 before_script:
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
-script: phpunit
+script:
+    - mkdir build/logs
+    - php vendor/bin/phpunit -c phpunit.xml.dist
+after_script:
+    - php vendor/bin/coveralls -v
