@@ -2,7 +2,7 @@
 
 Simple PHP port for the [Google Annotations Gallery](https://code.google.com/p/gag/)
 
-[![Build Status](https://secure.travis-ci.org/kpacha/php-gag.png?branch=master)](https://travis-ci.org/kpacha/php-gag)
+[![Build Status](https://secure.travis-ci.org/kpacha/php-gag.png?branch=master)](https://travis-ci.org/kpacha/php-gag) [![Coverage Status](https://coveralls.io/repos/kpacha/php-gag/badge.png?branch=master)](https://coveralls.io/r/kpacha/php-gag?branch=master)
 
 The PHP-GAG is an open source library that provides a rich set of annotations for
 developers to express themselves. Do you find the standard phpDoc annotations dry
