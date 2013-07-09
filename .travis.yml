@@ -9,7 +9,7 @@ matrix:
 before_script:
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
 script:
-    - mkdir build/logs
+    - mkdir -p build/logs
     - php vendor/bin/phpunit -c phpunit.xml.dist
 after_script:
     - php vendor/bin/coveralls -v
