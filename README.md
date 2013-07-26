@@ -87,3 +87,7 @@ inspectors and validators. Look at the _examples/_ and _tests/_ for more details
 * Check the generated docs with the PHP-GAG annotations
 * Create a code review tool based on the PHP-GAG annotations
 * Publish the library at packagist
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kpacha/php-gag/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
